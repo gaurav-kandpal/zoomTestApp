@@ -55,10 +55,11 @@ router.post('/create', (req, res) => {
         });
 });
 
-router.post('/genSign', (req, res) => {
+router.post('/genSign/:meetid', (req, res) => {
     const API_KEY = config.APIKey;
     const API_SECRET = config.APISecret;
-    const GLOBAL_MEETING = config.MeetingId;
+    const GLOBAL_MEETING = req.params.meetid;
+    console.log('Callinggggggggggggggggggggggggg',req.params.meetid);
 
     const sign = generateSignature(API_KEY, API_SECRET, GLOBAL_MEETING, 0)
     res.send({ sign: sign });

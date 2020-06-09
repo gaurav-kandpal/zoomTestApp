@@ -58,7 +58,8 @@ class StartMeeting extends React.Component {
     }
 
     async generateSign() {
-        const response = await Api().post('meeting/genSign');
+        const { meeting_number } = this.props.formData;
+        const response = await Api().post(`meeting/genSign/${meeting_number}`);
         return response;
     }
 

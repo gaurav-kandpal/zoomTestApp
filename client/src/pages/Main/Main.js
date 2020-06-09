@@ -23,7 +23,7 @@ function Main() {
 
     function loadJoinMeeting() {
         setLoadJoinForm(true);
-        setCreateMeetingForm(false);
+        //setCreateMeetingForm(false);
     }
 
     async function createNewMeeting() {
@@ -47,13 +47,15 @@ function Main() {
                             <p></p>
                         </div>
                     </div>
-                    <button className='join-btn' onClick={createNewMeeting}>Request Online Appointment</button>
-                    <button className='join-btn' onClick={loadJoinMeeting}>Approve Appointment</button>
+                    {
+                        !createMeetingForm ? <button className='join-btn' onClick={createNewMeeting}>Request Online Appointment</button>
+                        : loadJoinForm ? <JoiningForm /> : <button className='join-btn' onClick={loadJoinMeeting}>Approve Appointment</button>
+                    }
+                    
                 </> :
                 <div> Loading....</div>
             }
-            {loadJoinForm && <JoiningForm />}
-            {createMeetingForm && <CreateForm />}
+            {createMeetingForm && !loadJoinForm && <CreateForm />}
         </div>
     );
 }

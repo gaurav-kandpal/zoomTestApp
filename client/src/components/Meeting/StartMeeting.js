@@ -2,6 +2,7 @@ import React from 'react';
 import { ZoomMtg } from '@zoomus/websdk';
 
 import Api from '../../services/Api';
+import './StartMeeting.css';
 
 class StartMeeting extends React.Component {
     constructor(props) {
@@ -9,7 +10,8 @@ class StartMeeting extends React.Component {
 
         this.state = {
             sign: '',
-            formData: {}
+            formData: this.props.formData,
+            data: this.props.data
         }
 
         this.generateSign = this.generateSign.bind(this);
@@ -86,9 +88,15 @@ class StartMeeting extends React.Component {
 
     render() {
         return (
-            <div className='app-container'>
-                StartMeeting
-                <button onClick={this.handleClick}>Click</button>
+            <div className='app-containerStart'>
+                Appoinment has been approved!!!
+                <br />
+                <br />
+                Video Link ---->>> {this.state.data.submittedData && this.state.data.submittedData.join_url}
+                <br />
+                <br />
+                <div id="zmmtg-root"></div>
+                {/* <button onClick={this.handleClick}>Click</button> */}
             </div>
         );
     }

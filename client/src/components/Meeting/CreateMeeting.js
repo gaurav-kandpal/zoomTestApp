@@ -1,7 +1,7 @@
 import React from 'react';
 import Api from '../../services/Api';
 
-class StartMeeting extends React.Component {
+class CreateMeeting extends React.Component {
     
     // async componentDidMount() {
         //     await Api().post('/meeting/create');
@@ -43,4 +43,4 @@ class StartMeeting extends React.Component {
     }
 }
 
-export default StartMeeting;
+export default CreateMeeting;

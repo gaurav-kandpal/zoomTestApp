@@ -66,7 +66,7 @@ class ApproveMeeting extends React.Component {
                 </div>
             );
         }
-        return <StartMeeting formData={formData}/>
+        return <StartMeeting formData={formData} data={this.state}/>
     }
 }
 

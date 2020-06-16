@@ -52,7 +52,6 @@ class ApproveMeeting extends React.Component {
             meeting_number: this.state.submittedData && this.state.submittedData.id,
             meeting_pwd: this.state.submittedData && this.state.submittedData.password
         }
-        console.log('state-approveMeeting', this.state);
         if (!this.state.isJoined) {
             return (
                 <div className='app-container'>
@@ -66,7 +65,7 @@ class ApproveMeeting extends React.Component {
                 </div>
             );
         }
-        return <StartMeeting formData={formData}/>
+        return <StartMeeting formData={formData} data={this.state}/>
     }
 }
 

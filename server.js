@@ -10,7 +10,7 @@ const user = require('./routes/user');
 
 // Middlewares
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // Use Routes
 app.use('/meeting', meeting);

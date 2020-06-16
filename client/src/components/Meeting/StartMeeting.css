@@ -43,6 +43,7 @@
  
 #wc-container-left>div {
     height: 100%;
+    width: 50%;
 }
  
 #wc-container-left .main-layout {
@@ -101,6 +102,10 @@ footer #wc-footer {
  
 .btn-toolbar {
     display: none;
+}
+
+.diaout-layer {
+    height: 100%;
 }
  
 #wc-footer-left {
@@ -195,3 +200,19 @@ span.img-start-video {
     display: flex;
     flex-direction: column;
 }
+
+
+  #wc-footer {
+    bottom: 0 !important;
+    width: 100% !important;
+  }
+    
+  #dialog-join {
+    width: 100% !important;
+  }
+
+  .suspension-window {
+    transform: translate(-444px, 10px) !important;
+  }
+
+

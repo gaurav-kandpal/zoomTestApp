@@ -3,6 +3,7 @@ import { ZoomMtg } from '@zoomus/websdk';
 
 import Api from '../../services/Api';
 import './StartMeeting.css';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 class StartMeeting extends React.Component {
     constructor(props) {
@@ -95,7 +96,7 @@ class StartMeeting extends React.Component {
                 Video Link ---->>> {this.state.data.submittedData && this.state.data.submittedData.join_url}
                 <br />
                 <br />
-                <div id="zmmtg-root"></div>
+                <VideoPlayer />
                 {/* <button onClick={this.handleClick}>Click</button> */}
             </div>
         );

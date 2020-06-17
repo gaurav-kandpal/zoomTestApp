@@ -7,14 +7,24 @@ const token = require('../common/token');
 const generateSignature = require('../common/signature');
 
 
+function generatePassword() {
+    const password = Math.random().toString(36).slice(2)
+    if (password.length > 10) {
+        return generatePassword();
+    }
+    return password;
+}
+
 router.post('/create', (req, res) => {
     const meeting_topic = req.body.meeting_topic || "Vishant's Meeting";
     const meeting_number = req.body.meeting_number;
-    const meeting_pwd = req.body.meeting_pwd;
-
+    const meeting_pwd = req.body.meeting_pwd || generatePassword();
+    
+    console.log('Password', meeting_pwd);
+    console.log('Password-length', meeting_pwd.length);
     let options = {
-        uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
-        // uri: 'https://api.zoom.us/v2/users/qeCLkVSjSeqPZ6l7bes1wQ/meetings', // Nitish's
+        // uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
+        uri: 'https://api.zoom.us/v2/users/7sD7hcj3StmL_eqJmqY_qA/meetings',
         auth: { 'bearer': token },
         method: 'POST',
         headers: {
@@ -23,22 +33,23 @@ router.post('/create', (req, res) => {
         },
         body: {
             "topic": meeting_topic,
-            "type": 3,
-            "start_time": "2020-06-08T011:35:00Z",
+            "type": 2,
+            "start_time": "2020-06-16T09:45:00Z",
             "duration": 60,
             "timezone": "Asia/Calcutta",
             "password": meeting_pwd,
             "agenda": "Meeting Description goes here....",
             "settings": {
-                "host_video": true,
-                "participant_video": true,
+                "host_video": false,
+                "participant_video": false,
                 "in_meeting": true,
                 "join_before_host": true,   
                 "mute_upon_entry": true,
                 "approval_type": 2,
                 "audio": "both",
                 "auto_recording": "local",
-                "option_jbh": true
+                "option_jbh": true,
+                "waiting_room": false
             }
         },
         json: true

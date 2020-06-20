@@ -1,5 +1,6 @@
 const rp = require('request-promise');
 const express = require('express');
+const fs = require('fs');
 const router = express.Router();
 
 const config = require('../config');
@@ -34,7 +35,7 @@ router.post('/create', (req, res) => {
         body: {
             "topic": meeting_topic,
             "type": 2,
-            "start_time": "2020-06-16T09:45:00Z",
+            "start_time": "2020-06-17T10:15:00Z",
             "duration": 60,
             "timezone": "Asia/Calcutta",
             "password": meeting_pwd,
@@ -58,6 +59,14 @@ router.post('/create', (req, res) => {
     // Use request-promise module's .then() method to make request calls.
     rp(options)
         .then(function (response) {
+            fs.writeFile('meetingNumber.txt', response.id, function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+            });
+            fs.writeFile('meetingPassword.txt', meeting_pwd, function (err) {
+                if (err) throw err;
+                console.log('Saved!!');
+            });
             res.send(response);
         })
         .catch(function (err) {
@@ -66,14 +75,15 @@ router.post('/create', (req, res) => {
         });
 });
 
-router.post('/genSign/:meetid', (req, res) => {
+router.post('/genSign', (req, res) => {
     const API_KEY = config.APIKey;
     const API_SECRET = config.APISecret;
-    const GLOBAL_MEETING = req.params.meetid;
-    console.log('Callinggggggggggggggggggggggggg',req.params.meetid);
+    const meetingNum = fs.readFileSync('meetingNumber.txt', 'utf8');
+    const meetingPwd = fs.readFileSync('meetingPassword.txt', 'utf8');
+    const GLOBAL_MEETING = meetingNum;
 
     const sign = generateSignature(API_KEY, API_SECRET, GLOBAL_MEETING, 0)
-    res.send({ sign: sign });
+    res.send({ sign: sign, meetingId: meetingNum, meetingPwd });
 })
 
 module.exports = router;

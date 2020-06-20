@@ -11,25 +11,23 @@ class StartMeeting extends React.Component {
 
         this.state = {
             sign: '',
-            formData: this.props.formData,
-            data: this.props.data
+            meeting_number: undefined,
+            meeting_pwd: undefined
         }
 
-        this.generateSign = this.generateSign.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+
     }
 
     async start() {
 
-        const { display_name, meeting_number, meeting_pwd, meeting_role } = this.props.formData;
         const signature = this.state.sign;
         const meetConfig = {
             apiKey: process.env.REACT_APP_API_KEY,
-            meetingNumber: meeting_number,
+            meetingNumber: this.state.meeting_number,
             leaveUrl: 'http://localhost:3000/app',
-            userName: display_name,
-            passWord: meeting_pwd, // if required
-            role: meeting_role || 0, // 1 for host; 0 for attendee or webinar
+            userName: 'Vishant',
+            passWord: this.state.meeting_pwd, // if required
+            role: 0, // 1 for host; 0 for attendee or webinar
             signature
         };
 
@@ -61,25 +59,22 @@ class StartMeeting extends React.Component {
     }
 
     async generateSign() {
-        const { meeting_number } = this.props.formData;
-        const response = await Api().post(`meeting/genSign/${meeting_number}`);
+        // const { meeting_number } = this.props.formData;
+        const response = await Api().post('meeting/genSign');
         return response;
     }
 
     async handleClick() {
         const sign = await this.generateSign();
-        this.setState({ sign: sign.sign });
+        this.setState({ sign: sign.sign, meeting_number: sign.meetingId, meeting_pwd: sign.meetingPwd }, () => console.log('check the state', this.state));
         this.start();
     }
 
     async componentDidMount() {
+
         ZoomMtg.setZoomJSLib('https://source.zoom.us/1.7.8/lib', '/av');
         ZoomMtg.prepareJssdk();
         ZoomMtg.preLoadWasm();
-
-        const formData = this.props.formData;
-
-        this.setState({ formData });
 
         setTimeout(() => this.handleClick(), 1000)
 
@@ -90,14 +85,7 @@ class StartMeeting extends React.Component {
     render() {
         return (
             <div className='app-containerStart'>
-                Appoinment has been approved!!!
-                <br />
-                <br />
-                Video Link ---->>> {this.state.data.submittedData && this.state.data.submittedData.join_url}
-                <br />
-                <br />
                 <VideoPlayer />
-                {/* <button onClick={this.handleClick}>Click</button> */}
             </div>
         );
     }

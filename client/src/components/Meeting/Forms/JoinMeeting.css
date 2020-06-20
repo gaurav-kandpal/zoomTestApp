@@ -1,4 +1,4 @@
-.join-meeting-form {
+/* .join-meeting-form {
     margin-top: 40px;
 }
 
@@ -24,4 +24,30 @@ form input {
     border-radius: 100px;
     box-shadow: 1px 1px 2px grey;
     background: rgb(110, 129, 185);
+} */
+
+.appointment_profile {
+    border: 1px solid green;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.start1 {
+    float: left;
+}
+
+.start2 {
+    float: right;
+}
+
+.appointment_profile button {
+    padding: 5px 20px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px black;
+    outline: none;
+    color: white;
+    background: rgb(42, 133, 86);
 }

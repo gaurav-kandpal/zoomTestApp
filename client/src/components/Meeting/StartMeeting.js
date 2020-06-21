@@ -12,7 +12,8 @@ class StartMeeting extends React.Component {
         this.state = {
             sign: '',
             formData: this.props.formData,
-            // data: this.props.data
+
+            data: this.props.data
         }
 
         this.generateSign = this.generateSign.bind(this);
@@ -95,7 +96,8 @@ class StartMeeting extends React.Component {
                 Appoinment has been approved!!!
                 <br />
                 <br />
-                {/* Video Link ---->>> {this.state.data.submittedData && this.state.data.submittedData.join_url} */}
+
+                Video Link ---->>> {this.state.data.submittedData && this.state.data.submittedData.join_url}
                 <br />
                 <br />
                 <VideoPlayer />

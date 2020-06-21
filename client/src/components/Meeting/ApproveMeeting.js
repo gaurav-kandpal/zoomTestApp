@@ -52,21 +52,21 @@ class ApproveMeeting extends React.Component {
             meeting_number: this.state.submittedData && this.state.submittedData.id,
             meeting_pwd: this.state.submittedData && this.state.submittedData.password
         }
-        // if (!this.state.isJoined) {
-        //     return (
-        //         <div className='app-container'>
-        //             Appoinment has been approved!!!
-        //         <br />
-        //             <br />
-        //             Video Link ---->>> {this.state.submittedData && this.state.submittedData.join_url}
-        //             <br />
-        //             <br />
-        //             {this.state.showButton ? <button type="submit" id="join_meeting_button" onClick={this.handleClick}>Join</button> : ''}
-        //         </div>
-        //     );
-        // }
-        // return <StartMeeting formData={formData} data={this.state}/>
-        return <JoinMeeting />;
+
+        if (!this.state.isJoined) {
+            return (
+                <div className='app-container'>
+                    Appoinment has been approved!!!
+                <br />
+                    <br />
+                    Video Link ---->>> {this.state.submittedData && this.state.submittedData.join_url}
+                    <br />
+                    <br />
+                    {this.state.showButton ? <button type="submit" id="join_meeting_button" onClick={this.handleClick}>Join</button> : ''}
+                </div>
+            );
+        }
+        return <StartMeeting formData={formData} data={this.state}/>
     }
 }
 

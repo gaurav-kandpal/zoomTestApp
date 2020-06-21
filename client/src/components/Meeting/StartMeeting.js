@@ -12,6 +12,7 @@ class StartMeeting extends React.Component {
         this.state = {
             sign: '',
             formData: this.props.formData,
+
             data: this.props.data
         }
 
@@ -32,6 +33,8 @@ class StartMeeting extends React.Component {
             role: meeting_role || 0, // 1 for host; 0 for attendee or webinar
             signature
         };
+
+        console.log(this.props.formData);
 
         console.log('Meeting-COnfig', meetConfig);
         ZoomMtg.init({
@@ -93,6 +96,7 @@ class StartMeeting extends React.Component {
                 Appoinment has been approved!!!
                 <br />
                 <br />
+
                 Video Link ---->>> {this.state.data.submittedData && this.state.data.submittedData.join_url}
                 <br />
                 <br />

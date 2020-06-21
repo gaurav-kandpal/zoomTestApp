@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { Fragment } from "react";
 
 export default function () {
-    return (
-        <div>Home Page</div>
-    );
+  return <Fragment>Home Page</Fragment>;
 }

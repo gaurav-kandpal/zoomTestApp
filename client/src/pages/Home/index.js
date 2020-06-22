@@ -32,8 +32,8 @@ const Home = () => {
     <>
       <Box className={classes.root}>
         <Grid container spacing={0}>
-          <Grid item xs={2} />
-          <Grid item xs={8}>
+          <Grid item xs={2} sm={4} />
+          <Grid item xs={8} sm={4}>
             <Typography
               className={classes.textWhite}
               align="left"

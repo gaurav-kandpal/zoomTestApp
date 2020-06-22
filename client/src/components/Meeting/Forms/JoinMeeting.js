@@ -1,110 +1,245 @@
-import React from 'react';
+import React, { useState } from "react";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Divider,
+  Grid,
+  Link,
+  Paper,
+  Typography,
+} from "@material-ui/core";
+import { Edit, LocationOn, AssignmentInd, Videocam } from "@material-ui/icons";
+import { teal, yellow, lightGreen } from "@material-ui/core/colors";
+
 // import StartMeeting from '../StartMeeting';
-import ApproveMeeting from '../ApproveMeeting';
-import StartMeeting from '../StartMeeting';
+import ApproveMeeting from "../ApproveMeeting";
+import StartMeeting from "../StartMeeting";
+import Navbar from "../../layouts/Navbar";
 
-import './JoinMeeting.css';
+// import "./JoinMeeting.css";
 
-class JoinMeetingForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            startMeeting: false,
-        }
-        this.handleClick = this.handleClick.bind(this);
-    }
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiButton-contained": {
+      boxShadow:
+        "0px 6px 6px -3px rgba(240, 109, 200, 0.12), 0px 10px 14px 1px rgba(255, 86, 105, 0.24), 0px 4px 18px 3px rgba(255, 178, 21, 0.22)",
+    },
 
-    handleClick(e) {
-        e.preventDefault();
-        this.setState({ startMeeting: true });
-        // console.log('Handle CLick', this.state.form);
-    }
+    background: "#FFFFFF",
+    display: "flex",
+    height: "100vh",
+    padding: "30px 15px",
+    boxSizing: "border-box",
+  },
+  breadcrumbStyles: {
+    padding: "7px 15px",
+  },
+  userLOcation: {
+    background: "#f0f0f0",
+    padding: "7px 15px 5px",
+    boxSizing: "border-box",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  userLocationName: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  teal: {
+    color: teal[500],
+    backgroundColor: teal[100],
+    border: `1px solid ${yellow[200]}`,
+  },
+  yellow: {
+    color: yellow[800],
+    border: `1px solid ${yellow[200]}`,
+  },
+  lightGreen: {
+    color: lightGreen[800],
+    backgroundColor: lightGreen["A100"],
+    border: `1px solid ${lightGreen[200]}`,
+  },
+  dividerStyle: {
+    marginBottom: theme.spacing(3),
+    marginTop: theme.spacing(3),
+  },
+  statusStyle: {
+    textAlign: "left",
+  },
+  chipStyle: {
+    boxShadow: "1px 2px 2px rgba(0, 0, 0, 0.125)",
+  },
+  cardRoot: {
+    marginBottom: theme.spacing(5),
+  },
+  upcomingDetailsContainer: {
+    display: "flex",
+  },
+  upcomingDetailsText: {
+    display: "flex",
+    flexGrow: "1",
+    boxSizing: "border-box",
+    paddingLeft: theme.spacing(1),
+  },
+  joinBtn: {
+    background: "linear-gradient(45deg, #f96dc8 1%,#ff5669 50%,#ffb215 100%)",
+    float: "right",
+  },
+}));
 
-    // handleChange(event) {
-    //     this.setState({timeSlot: event.target.value})
-    //     console.log('State', this.state);
-    // }
+const JoinMeetingForm = (props) => {
+  //   constructor(props) {
+  //     super(props);
+  //     this.state = {
+  //       startMeeting: false,
+  //     };
+  //     this.handleClick = this.handleClick.bind(this);
+  //   }
 
-    render() {
-        // if (!this.state.startMeeting) {
-        //     return (
-        //         <div className='join-meeting-form'>
-        //             < form >
-        //                 <input type="text" name="display_name" id="display_name" value={this.state.form.display_name} placeholder='Name' onChange={this.handleChange} />
-        //                 <input type="text" name="meeting_number" id="meeting_number" value={this.state.form.meeting_number} placeholder='Meeting Number' onChange={this.handleChange} />
-        //                 <input type="text" name="meeting_pwd" id="meeting_pwd" value={this.state.form.meeting_pwd} placeholder='Meeting Password' onChange={this.handleChange} />
-        //                 <button type="submit" id="join_meeting" onClick={this.handleClick}>Join</button>
-        //             </form >
-        //         </div >
-        //     );
-        // }
-        // const data = JSON.parse(localStorage.getItem('testObject'));
-        // console.log('Print', data);
+  const [startMeeting, setStartMeeting] = useState(false);
 
-//         if (!this.state.startMeeting) {
-//             return (
-//                 <div className='app-container'>
-//                     <div className='user-details'>
-//                             <div className='user-details-item'>
-//                                 <div className='title'>Name : </div>
-//                                 {/* <div className='description'>{this.state.data.name}</div> */}
-//                                 <div className='description'>Check</div>
-//                                 <p></p>
-//                             </div>
-//                             <div className='user-details-item'>
-//                                 <div className='title'>Appointment Type : </div>
-//                                 {/* <div className='description'>{this.state.data.appointmentType}</div> */}
-//                                 <div className='description'>Test</div>
-//                                 <p></p>
-//                             </div>
-//                             <div className='user-details-item'>
-//                                 <div className='title'>Preferred Appointment Slot : </div>
-//                                 {/* <div className='description'>{this.state.data.preferredTimeSlot}</div> */}
-//                                 <div className='description'>Deliver</div>
-//                                 <p></p>
-//                             </div>
-//                     </div>
-//                     {/* <div>
-//                         <input type="text" name="timeSlot" id="timeSlot" value={this.state.timeSlot} placeholder='Scheduled At' onChange={this.handleChange} />
-//                         <br/><br/><button type="submit" id="join_meeting" onClick={this.handleClick}>Approve</button>
-//                     </div> */}
-//                 </div>
-//             );
-//         }
-//         return <ApproveMeeting formData={this.state} />;
-//     }
-// }
+  const classes = useStyles();
 
-// export default JoinMeetingForm;
+  const handleClick = (e) => {
+    e.preventDefault();
+    setStartMeeting({ startMeeting: true });
+  };
 
-if (!this.state.startMeeting) {
+  if (!startMeeting) {
     return (
+      <>
+        <Navbar pageTitle="Upcoming Appointments" />
+
+        <Box>
+          <Grid container spacing={0}>
+            <Grid item xs={12}>
+              <Paper
+                className={classes.userLOcation}
+                variant="elevation"
+                elevation={1}
+                square={true}
+              >
+                <span className={classes.userLocationName}>
+                  <LocationOn />
+                  <Typography variant="body1">
+                    Downer Grove, Illinois
+                  </Typography>
+                </span>
+
+                <Link>
+                  <Edit />
+                </Link>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Box>
+
+        <Box className={classes.root}>
+          <Grid container spacing={0}>
+            <Grid item xs={12}>
+              <Card className={classes.cardRoot} elevation={10}>
+                <CardContent>
+                  <div className={classes.upcomingDetailsContainer}>
+                    <Avatar className={classes.teal}>
+                      <Videocam />
+                    </Avatar>
+
+                    <Box className={classes.upcomingDetailsText}>
+                      <Grid container spacing={0}>
+                        <Grid item xs={8}>
+                          <Typography color="textPrimary" variant="h5">
+                            Follow-up Visit
+                          </Typography>
+                          <Typography color="textSecondary" variant="subtitle1">
+                            Dr. James Miller, MD
+                          </Typography>
+                        </Grid>
+
+                        <Grid item xs={4}>
+                          <Typography
+                            align="right"
+                            color="textSecondary"
+                            variant="body2"
+                          >
+                            06/20/2020
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </Box>
+                  </div>
+
+                  <Divider
+                    className={classes.dividerStyle}
+                    variant="fullWidth"
+                  />
+
+                  <Box>
+                    <Grid container spacing={0}>
+                      <Grid item xs={6} className={classes.statusStyle}>
+                        <Chip
+                          variant="outlined"
+                          className={clsx(
+                            classes.lightGreen,
+                            classes.chipStyle
+                          )}
+                          label="Confirmed"
+                        />
+                      </Grid>
+                      <Grid item xs={6} alignitems="right">
+                        <Button
+                          className={classes.joinBtn}
+                          variant="contained"
+                          onClick={handleClick}
+                        >
+                          Join
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Box>
+
         <div className="appointment_profile">
-            <div className="appointment_type">
-                <div className="start1">Appointment Type <span>Follow up Visit</span></div>
-                <div className="start2">Confirmed</div>
+          <div className="appointment_type">
+            <div className="start1">
+              Appointment Type <span>Follow up Visit</span>
             </div>
-            <div className="appointment_time">
-                <div className="start1">Date &amp; Time</div>
-                <div className="start2">Jun 08, 2020, 11:15 AM</div>
+            <div className="start2">Confirmed</div>
+          </div>
+          <div className="appointment_time">
+            <div className="start1">Date &amp; Time</div>
+            <div className="start2">Jun 08, 2020, 11:15 AM</div>
+          </div>
+          <div className="appointment_with">
+            <div className="start1">Consultant Name</div>
+            <div className="start2">Mark Miller, MD</div>
+          </div>
+          <div className="appointment_location">
+            <div className="start1">Location</div>
+            <div className="start2">California Hospital Medical Centre</div>
+          </div>
+          <div className="appointment_due">
+            <div className="start1">In 05 minute</div>
+            <div className="start2">
+              <button type="submit" onClick={handleClick}>
+                Join
+              </button>
             </div>
-            <div className="appointment_with">
-                <div className="start1">Consultant Name</div>
-                <div className="start2">Mark Miller, MD</div>
-            </div>
-            <div className="appointment_location">
-                <div className="start1">Location</div>
-                <div className="start2">California Hospital Medical Centre</div>
-            </div>
-            <div className="appointment_due">
-                <div className="start1">In 05 minute</div>
-                <div className="start2"><button type='submit' onClick={this.handleClick}>Join</button></div>
-            </div>
-        </div> );
-        }
-    return (
-        <StartMeeting/>
+          </div>
+        </div>
+      </>
     );
-    }
-}
+  }
+  return <StartMeeting />;
+};
 export default JoinMeetingForm;

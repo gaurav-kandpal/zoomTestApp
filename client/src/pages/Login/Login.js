@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import {
+  Box,
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  TextField,
+  Typography,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import * as AuthActions from "../../services/Store/Reducers/Auth";
 import * as UserActions from "../../services/Store/Reducers/User";
@@ -9,11 +22,49 @@ import Api from "../../services/Api";
 
 // import './Login.css';
 
-function Login(props) {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      marginBottom: theme.spacing(1),
+    },
+
+    "& .MuiFormControl-root": {
+      width: "100%",
+    },
+
+    "& .MuiButton-contained": {
+      boxShadow:
+        "0px 6px 6px -3px rgba(240, 109, 200, 0.12), 0px 10px 14px 1px rgba(255, 86, 105, 0.24), 0px 4px 18px 3px rgba(255, 178, 21, 0.22)",
+    },
+
+    height: "100vh",
+    backgroundColor: "#FFFFFF",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  accessForm: {
+    padding: theme.spacing(3),
+    margin: theme.spacing(3),
+    maxWidth: "320px",
+  },
+  signInBtn: {
+    background: "linear-gradient(45deg, #f96dc8 1%,#ff5669 50%,#ffb215 100%)",
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+  },
+  inputProfileSelect: {
+    marginTop: theme.spacing(3),
+  },
+}));
+
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   // const [role, setRole] = useState('');
   const [patientName, setPatientName] = useState("");
+
+  const classes = useStyles();
 
   function ValidateEmail() {
     setError("Required");
@@ -80,64 +131,92 @@ function Login(props) {
   }
 
   return (
-    <div className="login-form">
-      <div>
-        <label htmlFor="role">Login as:</label>
-        <select name="role" id="role" onChange={onDropDownChange}>
-          <option value="select" defaultChecked>
-            Select
-          </option>
-          <option value="doctor">Doctor</option>
-          <option value="patient">Patient</option>
-        </select>
-      </div>
-      {props.userState.role === "doctor" ? (
-        <div>
-          <form>
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-              placeholder="username@email"
-              required
-              autoComplete="off"
-            />
-            {error && <span>{error}</span>}
-            <button type="submit" onClick={onLoginAsDoctor}>
-              Login
-            </button>
-          </form>
-        </div>
-      ) : (
-        ""
-      )}
+    <>
+      <Box className={classes.root}>
+        <Grid container spacing={0}>
+          <Grid item xs={false} sm={3} />
+          <Grid item xs={12} sm={6}>
+            <Typography variant="h5" color="textPrimary" align="center">
+              Welcome to Patient Portal
+            </Typography>
 
-      {props.userState.role === "patient" ? (
-        <div>
-          <form>
-            <label htmlFor="patientName">Name</label>
-            <input
-              type="text"
-              name="patientName"
-              value={patientName}
-              onChange={onChangePatient}
-              placeholder="Enter your name"
-              required
-              autoComplete="off"
-            />
-            <button type="submit" onClick={onLoginAsPatient}>
-              Continue
-            </button>
-          </form>
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
+            <Paper className={classes.accessForm} elevation={10}>
+              <FormControl>
+                <InputLabel id="user_profile_select_label">
+                  Login as:
+                </InputLabel>
+
+                <Select
+                  labelId="user_profile_select_label"
+                  id="role"
+                  name="role"
+                  onChange={onDropDownChange}
+                >
+                  <MenuItem value="">
+                    <em>Select</em>
+                  </MenuItem>
+                  <MenuItem value="doctor">Doctor</MenuItem>
+                  <MenuItem value="patient">Patient</MenuItem>
+                </Select>
+              </FormControl>
+              {props.userState.role === "doctor" ? (
+                <form className={classes.inputProfileSelect}>
+                  <TextField
+                    label="Email"
+                    type="email"
+                    variant="outlined"
+                    value={email}
+                    onChange={handleChange}
+                    fullWidth
+                  />
+
+                  <Button
+                    className={classes.signInBtn}
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    size="medium"
+                    onClick={onLoginAsDoctor}
+                  >
+                    Continue
+                  </Button>
+                </form>
+              ) : (
+                ""
+              )}
+
+              {props.userState.role === "patient" ? (
+                <form className={classes.inputProfileSelect}>
+                  <TextField
+                    label="Name"
+                    type="text"
+                    variant="outlined"
+                    value={patientName}
+                    onChange={onChangePatient}
+                    fullWidth
+                  />
+
+                  <Button
+                    className={classes.signInBtn}
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    size="medium"
+                    onClick={onLoginAsPatient}
+                  >
+                    Continue
+                  </Button>
+                </form>
+              ) : (
+                ""
+              )}
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   authState: state.AuthReducer,

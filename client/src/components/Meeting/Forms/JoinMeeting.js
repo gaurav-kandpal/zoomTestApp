@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   joinBtn: {
     background: "linear-gradient(45deg, #f96dc8 1%,#ff5669 50%,#ffb215 100%)",
     float: "right",
-    cursor: "pointer"
+    cursor: "pointer",
   },
 }));
 
@@ -107,7 +107,7 @@ const JoinMeetingForm = (props) => {
 
   const [startMeeting, setStartMeeting] = useState(false);
   const [isJoinEnabled, setIsJoinEnabled] = useState(false);
-  console.log('Check here', props.joinEnabled);
+  console.log("Check here", props.joinEnabled);
   const classes = useStyles();
 
   const handleClick = (e) => {
@@ -117,19 +117,19 @@ const JoinMeetingForm = (props) => {
 
   useEffect(() => {
     async function getMeetingApproval() {
-      const res = await Api().get("/meetingApproval/meetingApprovalRetreived")
-      if (res.approved === 'true') {
+      const res = await Api().get("/meetingApproval/meetingApprovalRetreived");
+      if (res.approved === "true") {
         setIsJoinEnabled(true);
       }
     }
     getMeetingApproval();
-    const interval = setInterval(() => getMeetingApproval(), 5000)
+    const interval = setInterval(() => getMeetingApproval(), 5000);
     return () => {
       clearInterval(interval);
-    }
-})
+    };
+  });
 
-  console.log('props-patient', props);
+  console.log("props-patient", props);
   if (!startMeeting) {
     return (
       <>
@@ -227,35 +227,6 @@ const JoinMeetingForm = (props) => {
             </Grid>
           </Grid>
         </Box>
-
-        {/* <div className="appointment_profile">
-          <div className="appointment_type">
-            <div className="start1">
-              Appointment Type <span>Follow up Visit</span>
-            </div>
-            <div className="start2">Confirmed</div>
-          </div>
-          <div className="appointment_time">
-            <div className="start1">Date &amp; Time</div>
-            <div className="start2">Jun 08, 2020, 11:15 AM</div>
-          </div>
-          <div className="appointment_with">
-            <div className="start1">Consultant Name</div>
-            <div className="start2">Mark Miller, MD</div>
-          </div>
-          <div className="appointment_location">
-            <div className="start1">Location</div>
-            <div className="start2">California Hospital Medical Centre</div>
-          </div>
-          <div className="appointment_due">
-            <div className="start1">In 05 minute</div>
-            <div className="start2">
-              <button type="submit" onClick={handleClick}>
-                Join
-              </button>
-            </div>
-          </div>
-        </div> */}
       </>
     );
   }

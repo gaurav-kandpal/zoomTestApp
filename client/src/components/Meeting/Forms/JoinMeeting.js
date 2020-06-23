@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -21,6 +21,7 @@ import { teal, yellow, lightGreen } from "@material-ui/core/colors";
 import ApproveMeeting from "../ApproveMeeting";
 import StartMeeting from "../StartMeeting";
 import Navbar from "../../layouts/Navbar";
+import Api from "../../../services/Api";
 
 // import "./JoinMeeting.css";
 
@@ -91,6 +92,7 @@ const useStyles = makeStyles((theme) => ({
   joinBtn: {
     background: "linear-gradient(45deg, #f96dc8 1%,#ff5669 50%,#ffb215 100%)",
     float: "right",
+    cursor: "pointer"
   },
 }));
 
@@ -104,7 +106,8 @@ const JoinMeetingForm = (props) => {
   //   }
 
   const [startMeeting, setStartMeeting] = useState(false);
-
+  const [isJoinEnabled, setIsJoinEnabled] = useState(false);
+  console.log('Check here', props.joinEnabled);
   const classes = useStyles();
 
   const handleClick = (e) => {
@@ -112,6 +115,21 @@ const JoinMeetingForm = (props) => {
     setStartMeeting({ startMeeting: true });
   };
 
+  useEffect(() => {
+    async function getMeetingApproval() {
+      const res = await Api().get("/meetingApproval/meetingApprovalRetreived")
+      if (res.approved === 'true') {
+        setIsJoinEnabled(true);
+      }
+    }
+    getMeetingApproval();
+    const interval = setInterval(() => getMeetingApproval(), 5000)
+    return () => {
+      clearInterval(interval);
+    }
+})
+
+  console.log('props-patient', props);
   if (!startMeeting) {
     return (
       <>
@@ -197,6 +215,7 @@ const JoinMeetingForm = (props) => {
                           className={classes.joinBtn}
                           variant="contained"
                           onClick={handleClick}
+                          disabled={!isJoinEnabled}
                         >
                           Join
                         </Button>
@@ -209,7 +228,7 @@ const JoinMeetingForm = (props) => {
           </Grid>
         </Box>
 
-        <div className="appointment_profile">
+        {/* <div className="appointment_profile">
           <div className="appointment_type">
             <div className="start1">
               Appointment Type <span>Follow up Visit</span>
@@ -236,7 +255,7 @@ const JoinMeetingForm = (props) => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </>
     );
   }

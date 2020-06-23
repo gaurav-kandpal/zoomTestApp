@@ -104,7 +104,8 @@ const Login = (props) => {
   async function onLoginAsPatient(e) {
     e.preventDefault();
     props.onLoginRequest(true);
-    const email = "sanjeev.dhawan@rsystems.com";
+    const email = "vishant777@gmail.com";
+    // const email = "sanjeev.dhawan@rsystems.com";
 
     const response = await Api().post("user/app", { email });
 

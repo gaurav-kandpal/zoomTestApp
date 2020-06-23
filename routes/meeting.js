@@ -24,8 +24,8 @@ router.post('/create', (req, res) => {
     console.log('Password', meeting_pwd);
     console.log('Password-length', meeting_pwd.length);
     let options = {
-        // uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
-        uri: 'https://api.zoom.us/v2/users/7sD7hcj3StmL_eqJmqY_qA/meetings',
+        uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
+        // uri: 'https://api.zoom.us/v2/users/7sD7hcj3StmL_eqJmqY_qA/meetings',
         auth: { 'bearer': token },
         method: 'POST',
         headers: {
@@ -35,7 +35,7 @@ router.post('/create', (req, res) => {
         body: {
             "topic": meeting_topic,
             "type": 2,
-            "start_time": "2020-06-17T10:15:00Z",
+            "start_time": "2020-06-23T16:15:00Z",
             "duration": 60,
             "timezone": "Asia/Calcutta",
             "password": meeting_pwd,
@@ -59,7 +59,7 @@ router.post('/create', (req, res) => {
     // Use request-promise module's .then() method to make request calls.
     rp(options)
         .then(function (response) {
-            fs.writeFile('meetingNumber.txt', response.id, function (err) {
+            fs.writeFile('meetingNumber.txt', parseInt(response.id, 10).toString(), function (err) {
                 if (err) throw err;
                 console.log('Saved!');
             });

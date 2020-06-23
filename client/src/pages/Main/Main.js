@@ -17,7 +17,7 @@ import { Edit, LocationOn } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Api from "../../services/Api";
-import { isEmpty } from "../../services/common";
+// import { isEmpty } from "../../services/common";
 import Navbar from "../../components/layouts/Navbar";
 import JoiningForm from "../../components/Meeting/Forms/JoinMeeting";
 import CreateMeeting from "../../components/Meeting/CreateMeeting";
@@ -91,9 +91,9 @@ function Main(props) {
     setRole(localStorage.getItem("role"));
   }, [props.user]);
 
-  async function createNewMeeting() {
-    setLoadJoinForm(false);
-  }
+  // async function createNewMeeting() {
+  //   setLoadJoinForm(false);
+  // }
 
   function onClickScheduleMeeting() {
     setScheduleAMeeting(true);

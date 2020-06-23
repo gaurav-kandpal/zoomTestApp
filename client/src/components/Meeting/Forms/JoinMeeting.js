@@ -14,11 +14,11 @@ import {
   Paper,
   Typography,
 } from "@material-ui/core";
-import { Edit, LocationOn, AssignmentInd, Videocam } from "@material-ui/icons";
+import { Edit, LocationOn, Videocam } from "@material-ui/icons";
 import { teal, yellow, lightGreen } from "@material-ui/core/colors";
 
 // import StartMeeting from '../StartMeeting';
-import ApproveMeeting from "../ApproveMeeting";
+// import ApproveMeeting from "../ApproveMeeting";
 import StartMeeting from "../StartMeeting";
 import Navbar from "../../layouts/Navbar";
 
@@ -95,14 +95,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const JoinMeetingForm = (props) => {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = {
-  //       startMeeting: false,
-  //     };
-  //     this.handleClick = this.handleClick.bind(this);
-  //   }
-
   const [startMeeting, setStartMeeting] = useState(false);
 
   const classes = useStyles();
@@ -208,35 +200,6 @@ const JoinMeetingForm = (props) => {
             </Grid>
           </Grid>
         </Box>
-
-        <div className="appointment_profile">
-          <div className="appointment_type">
-            <div className="start1">
-              Appointment Type <span>Follow up Visit</span>
-            </div>
-            <div className="start2">Confirmed</div>
-          </div>
-          <div className="appointment_time">
-            <div className="start1">Date &amp; Time</div>
-            <div className="start2">Jun 08, 2020, 11:15 AM</div>
-          </div>
-          <div className="appointment_with">
-            <div className="start1">Consultant Name</div>
-            <div className="start2">Mark Miller, MD</div>
-          </div>
-          <div className="appointment_location">
-            <div className="start1">Location</div>
-            <div className="start2">California Hospital Medical Centre</div>
-          </div>
-          <div className="appointment_due">
-            <div className="start1">In 05 minute</div>
-            <div className="start2">
-              <button type="submit" onClick={handleClick}>
-                Join
-              </button>
-            </div>
-          </div>
-        </div>
       </>
     );
   }

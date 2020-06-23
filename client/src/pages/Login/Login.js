@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(1),
     },
 
+    "& input[type=text]:focus": {
+      outline: "0 !important",
+    },
+
     "& .MuiFormControl-root": {
       width: "100%",
     },
@@ -46,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
   accessForm: {
     padding: theme.spacing(3),
     margin: theme.spacing(3),
-    maxWidth: "320px",
   },
   signInBtn: {
     background: "linear-gradient(45deg, #f96dc8 1%,#ff5669 50%,#ffb215 100%)",
@@ -60,15 +63,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   // const [role, setRole] = useState('');
   const [patientName, setPatientName] = useState("");
 
   const classes = useStyles();
 
-  function ValidateEmail() {
-    setError("Required");
-  }
+  // function ValidateEmail() {
+  //   setError("Required");
+  // }
   function handleChange(e) {
     setEmail(e.target.value);
   }
@@ -134,8 +137,8 @@ const Login = (props) => {
     <>
       <Box className={classes.root}>
         <Grid container spacing={0}>
-          <Grid item xs={false} sm={3} />
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={false} sm={3} md={3} />
+          <Grid item xs={12} sm={6} md={6}>
             <Typography variant="h5" color="textPrimary" align="center">
               Welcome to Patient Portal
             </Typography>

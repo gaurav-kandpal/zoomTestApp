@@ -1,16 +1,6 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import { MenuOutlined } from "@material-ui/icons";
-
-// import MainOffsetMenu from '../MainOffsetMenu';
-// import VerticalMoreMenu from '../VerticalMoreMenu';
+import { AppBar, Box, Toolbar, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -47,7 +37,7 @@ const Navbar = (props) => {
   // };
 
   return (
-    <Fragment>
+    <>
       <Box component="nav">
         <AppBar position="static" className={classes.bgDarkblue}>
           <Toolbar>
@@ -76,7 +66,7 @@ const Navbar = (props) => {
                     { MainOffsetMenu('left') }
                 </Drawer> */}
       </Box>
-    </Fragment>
+    </>
   );
 };
 

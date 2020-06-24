@@ -5,10 +5,7 @@ import Api from "../../services/Api";
 import Doctor from "../../components/Meeting/Doctor/Doctor";
 import Patient from "../../components/Meeting/Patient/Patient";
 import * as UserActions from "../../services/Store/Reducers/User";
-<<<<<<< HEAD
 import './Main.css';
-=======
->>>>>>> a68b60ceb7c12a12ccdc0786fa22994cf08f9f44
 
 class Main extends React.Component {
   state = {
@@ -33,15 +30,9 @@ class Main extends React.Component {
     const res = await Api().get("/user/details");
     this.setState({
       user: res,
-<<<<<<< HEAD
-      role: localStorage.getItem("role")
-    })
-    const flag = 'false';
-=======
       role: localStorage.getItem("role"),
     });
     const flag = "false";
->>>>>>> a68b60ceb7c12a12ccdc0786fa22994cf08f9f44
     await Api().post("/meetingApproval/meetingRequested", { flag });
     await Api().post("/meetingApproval/meetingApproved", { flag });
 

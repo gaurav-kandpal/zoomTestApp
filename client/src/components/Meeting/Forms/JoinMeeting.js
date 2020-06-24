@@ -201,7 +201,17 @@ const JoinMeetingForm = (props) => {
                   <Box>
                     <Grid container spacing={0}>
                       <Grid item xs={6} className={classes.statusStyle}>
-                        <Chip
+                        {!isJoinEnabled ? (
+                          <Chip
+                          variant="outlined"
+                          className={clsx(
+                            classes.teal,
+                            classes.chipStyle
+                          )}
+                          label="Waiting For Approval"
+                        />
+                        ) : (
+                          <Chip
                           variant="outlined"
                           className={clsx(
                             classes.lightGreen,
@@ -209,6 +219,7 @@ const JoinMeetingForm = (props) => {
                           )}
                           label="Confirmed"
                         />
+                        )}
                       </Grid>
                       <Grid item xs={6} alignitems="right">
                         <Button

@@ -296,6 +296,9 @@ class Main extends React.Component {
       user: res,
       role: localStorage.getItem("role")
     })
+    const flag = 'false';
+    const response = await Api().post("/meetingApproval/meetingRequested", { flag });
+    const res = await Api().post("/meetingApproval/meetingApproved", { flag });
 
     this.interval = setInterval(() => this.retrieveMeetingRequest(), 2000);
   }
@@ -320,7 +323,7 @@ class Main extends React.Component {
         submittedData: res,
         isMeetingApproved: true
       });
-    const response = await Api().post("/meetingApproval/meetingApprovalSubmitted", { flag });
+    const response = await Api().post("/meetingApproval/meetingApproved", { flag });
   }
 
   onJoinMeeting = () => {
@@ -335,7 +338,12 @@ class Main extends React.Component {
       return <Doctor data={this.state} onClickJoinMeeting={this.onJoinMeeting} onClickApproveMeeting={this.onApproveMeeting} />
     }
 
-    return <Patient data={this.state} onRequestVideo={this.onRequestVideoConsult} />
+    if (this.state.role === 'patient') {
+      return <Patient data={this.state} onRequestVideo={this.onRequestVideoConsult} />
+    }
+    return (
+      <div>Loading ... </div>
+    )
   }
 }
 

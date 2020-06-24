@@ -24,8 +24,8 @@ router.post('/create', (req, res) => {
     console.log('Password', meeting_pwd);
     console.log('Password-length', meeting_pwd.length);
     let options = {
-        uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
-        // uri: 'https://api.zoom.us/v2/users/7sD7hcj3StmL_eqJmqY_qA/meetings',
+        // uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
+        uri: 'https://api.zoom.us/v2/users/7sD7hcj3StmL_eqJmqY_qA/meetings',
         auth: { 'bearer': token },
         method: 'POST',
         headers: {

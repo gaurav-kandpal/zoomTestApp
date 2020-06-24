@@ -5,8 +5,8 @@ const router = express.Router();
 const token = require('../common/token');
 
 router.get('/details', (req, res) => {
-    const userId = '00NAA7rTTaSdcRit_QRoUw';
-    // const userId = '7sD7hcj3StmL_eqJmqY_qA';
+    // const userId = '00NAA7rTTaSdcRit_QRoUw';
+    const userId = '7sD7hcj3StmL_eqJmqY_qA';
 
     let options = {
         uri: 'https://api.zoom.us/v2/users/' + userId,

@@ -60,15 +60,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   // const [role, setRole] = useState('');
   const [patientName, setPatientName] = useState("");
 
   const classes = useStyles();
 
-  function ValidateEmail() {
-    setError("Required");
-  }
+  // function ValidateEmail() {
+  //   setError("Required");
+  // }
   function handleChange(e) {
     setEmail(e.target.value);
   }
@@ -104,8 +104,8 @@ const Login = (props) => {
   async function onLoginAsPatient(e) {
     e.preventDefault();
     props.onLoginRequest(true);
-    const email = "vishant777@gmail.com";
-    // const email = "sanjeev.dhawan@rsystems.com";
+    // const email = "vishant777@gmail.com";
+    const email = "sanjeev.dhawan@rsystems.com";
 
     const response = await Api().post("user/app", { email });
 

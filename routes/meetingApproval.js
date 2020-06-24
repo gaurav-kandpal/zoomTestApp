@@ -16,7 +16,7 @@ router.post('/meetingRequested', (req, res) => {
     res.send({ flag });
 })
 
-router.post('/meetingApprovalSubmitted', (req, res) => {
+router.post('/meetingApproved', (req, res) => {
     const flag = req.body.flag
     console.log('flag', flag);
     fs.writeFile('meetingApproved.txt', flag, function (err) {

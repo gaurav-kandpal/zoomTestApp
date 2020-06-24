@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dfa4a35b.chunk.css",
+    "main.js": "/static/js/main.f8d66d4c.chunk.js",
+    "main.js.map": "/static/js/main.f8d66d4c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
+    "static/js/2.8084fe3a.chunk.js": "/static/js/2.8084fe3a.chunk.js",
+    "static/js/2.8084fe3a.chunk.js.map": "/static/js/2.8084fe3a.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.de67b27914d76fbd80863a56286ba2ad.js": "/precache-manifest.de67b27914d76fbd80863a56286ba2ad.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.dfa4a35b.chunk.css.map": "/static/css/main.dfa4a35b.chunk.css.map",
+    "static/js/2.8084fe3a.chunk.js.LICENSE.txt": "/static/js/2.8084fe3a.chunk.js.LICENSE.txt",
+    "static/media/austin-distel-7bMdiIqz_J4-unsplash.jpg": "/static/media/austin-distel-7bMdiIqz_J4-unsplash.977ed780.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.09b85ec0.js",
+    "static/js/2.8084fe3a.chunk.js",
+    "static/css/main.dfa4a35b.chunk.css",
+    "static/js/main.f8d66d4c.chunk.js"
+  ]
+}

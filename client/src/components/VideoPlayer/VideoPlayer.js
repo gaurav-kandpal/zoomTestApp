@@ -1,9 +1,9 @@
 //** @jsx jsx */
-import { jsx } from '@emotion/core';
+// import { jsx } from '@emotion/core';
 import React, { useEffect } from 'react';
 import './VideoPlayer.scss';
 
-import videoPlayerStyles from './MyStyle.style';
+// import videoPlayerStyles from './MyStyle.style';
 
 function VideoPlayer() {
     // full-screen-widget__icon full-screen-widget__icon--full

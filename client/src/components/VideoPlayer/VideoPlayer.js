@@ -1,6 +1,6 @@
 //** @jsx jsx */
 import React from "react";
-// import { jsx } from "@emotion/core";
+import { jsx } from "@emotion/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
     "& canvas#sv-active-video": {
       height: "50vh !important",
-      width: "100px !important",
+      width: "100% !important",
     },
 
     "& canvas#active-my-canvas": {

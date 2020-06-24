@@ -1,19 +1,18 @@
-const rp = require('request-promise');
-const express = require('express');
-const fs = require('fs');
+const rp = require("request-promise");
+const express = require("express");
+const fs = require("fs");
 const router = express.Router();
 
-const config = require('../config');
-const token = require('../common/token');
-const generateSignature = require('../common/signature');
-
+const config = require("../config");
+const token = require("../common/token");
+const generateSignature = require("../common/signature");
 
 function generatePassword() {
-    const password = Math.random().toString(36).slice(2)
-    if (password.length > 10) {
-        return generatePassword();
-    }
-    return password;
+  const password = Math.random().toString(36).slice(2);
+  if (password.length > 10) {
+    return generatePassword();
+  }
+  return password;
 }
 
 router.post('/create', (req, res) => {
@@ -56,34 +55,38 @@ router.post('/create', (req, res) => {
         json: true
     };
 
-    // Use request-promise module's .then() method to make request calls.
-    rp(options)
-        .then(function (response) {
-            fs.writeFile('meetingNumber.txt', parseInt(response.id, 10).toString(), function (err) {
-                if (err) throw err;
-                console.log('Saved!');
-            });
-            fs.writeFile('meetingPassword.txt', meeting_pwd, function (err) {
-                if (err) throw err;
-                console.log('Saved!!');
-            });
-            res.send(response);
-        })
-        .catch(function (err) {
-            res.status(500).send(err.message);
-            console.log('API call fail');
-        });
+  // Use request-promise module's .then() method to make request calls.
+  rp(options)
+    .then(function (response) {
+      fs.writeFile(
+        "meetingNumber.txt",
+        parseInt(response.id, 10).toString(),
+        function (err) {
+          if (err) throw err;
+          console.log("Saved!");
+        }
+      );
+      fs.writeFile("meetingPassword.txt", meeting_pwd, function (err) {
+        if (err) throw err;
+        console.log("Saved!!");
+      });
+      res.send(response);
+    })
+    .catch(function (err) {
+      res.status(500).send(err.message);
+      console.log("API call fail");
+    });
 });
 
-router.post('/genSign', (req, res) => {
-    const API_KEY = config.APIKey;
-    const API_SECRET = config.APISecret;
-    const meetingNum = fs.readFileSync('meetingNumber.txt', 'utf8');
-    const meetingPwd = fs.readFileSync('meetingPassword.txt', 'utf8');
-    const GLOBAL_MEETING = meetingNum;
+router.post("/genSign", (req, res) => {
+  const API_KEY = config.APIKey;
+  const API_SECRET = config.APISecret;
+  const meetingNum = fs.readFileSync("meetingNumber.txt", "utf8");
+  const meetingPwd = fs.readFileSync("meetingPassword.txt", "utf8");
+  const GLOBAL_MEETING = meetingNum;
 
-    const sign = generateSignature(API_KEY, API_SECRET, GLOBAL_MEETING, 0)
-    res.send({ sign: sign, meetingId: meetingNum, meetingPwd });
-})
+  const sign = generateSignature(API_KEY, API_SECRET, GLOBAL_MEETING, 0);
+  res.send({ sign: sign, meetingId: meetingNum, meetingPwd });
+});
 
 module.exports = router;

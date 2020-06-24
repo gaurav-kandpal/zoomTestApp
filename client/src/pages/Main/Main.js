@@ -21,8 +21,8 @@ import { isEmpty } from "../../services/common";
 import Navbar from "../../components/layouts/Navbar";
 import JoiningForm from "../../components/Meeting/Forms/JoinMeeting";
 import CreateMeeting from "../../components/Meeting/CreateMeeting";
-import Doctor from '../../components/Meeting/Doctor/Doctor';
-import Patient from '../../components/Meeting/Patient/Patient';
+import Doctor from "../../components/Meeting/Doctor/Doctor";
+import Patient from "../../components/Meeting/Patient/Patient";
 import * as UserActions from "../../services/Store/Reducers/User";
 
 // import { Button, Card } from "react-bootstrap";
@@ -132,8 +132,6 @@ import * as UserActions from "../../services/Store/Reducers/User";
 // }
 
 // return <Patient/>
-
-
 
 //     console.log('hereeee');
 //     getMeetingRequest();
@@ -273,22 +271,22 @@ import * as UserActions from "../../services/Store/Reducers/User";
 
 class Main extends React.Component {
   state = {
-    user: '',
-    role: '',
+    user: "",
+    role: "",
     isMeetingJoined: false,
     isMeetingRequested: false,
     isMeetingApproved: false,
-    submittedData: null
-  }
+    submittedData: null,
+  };
 
   retrieveMeetingRequest = async () => {
     const res = await Api().get("/meetingApproval/meetingRequestedRetreived");
-    if (res.approved === 'true') {
+    if (res.approved === "true") {
       this.setState({
         isMeetingRequested: true,
-      })
+      });
     }
-  }
+  };
 
   componentDidMount = async () => {
     const res = await Api().get("/user/details");
@@ -301,24 +299,26 @@ class Main extends React.Component {
     const res = await Api().post("/meetingApproval/meetingApproved", { flag });
 
     this.interval = setInterval(() => this.retrieveMeetingRequest(), 2000);
-  }
+  };
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
   onRequestVideoConsult = async () => {
-    const flag = 'true';
-    const response = await Api().post("/meetingApproval/meetingRequested", { flag });
+    const flag = "true";
+    const response = await Api().post("/meetingApproval/meetingRequested", {
+      flag,
+    });
     this.props.onRequestAMeeting(true);
     this.setState({
-      isMeetingRequested: true
+      isMeetingRequested: true,
     });
-  }
+  };
 
   onApproveMeeting = async () => {
-    const res = await Api().post('/meeting/create')
-    const flag = 'true';
+    const res = await Api().post("/meeting/create");
+    const flag = "true";
     this.setState({
         submittedData: res,
         isMeetingApproved: true
@@ -328,22 +328,35 @@ class Main extends React.Component {
 
   onJoinMeeting = () => {
     this.setState({
-      isMeetingJoined: true
-    })
-  }
+      isMeetingJoined: true,
+    });
+  };
 
   render() {
-    console.log('Main-Com', this.state);
-    if (this.state.role === 'doctor') {
-      return <Doctor data={this.state} onClickJoinMeeting={this.onJoinMeeting} onClickApproveMeeting={this.onApproveMeeting} />
+    console.log("Main-Com", this.state);
+    if (this.state.role === "doctor") {
+      return (
+        <>
+          <Doctor
+            data={this.state}
+            onClickJoinMeeting={this.onJoinMeeting}
+            onClickApproveMeeting={this.onApproveMeeting}
+          />
+        </>
+      );
     }
 
-    if (this.state.role === 'patient') {
-      return <Patient data={this.state} onRequestVideo={this.onRequestVideoConsult} />
+    if (this.state.role === "patient") {
+      return (
+        <>
+          <Patient
+            data={this.state}
+            onRequestVideo={this.onRequestVideoConsult}
+          />
+        </>
+      );
     }
-    return (
-      <div>Loading ... </div>
-    )
+    return <div>Loading ... </div>;
   }
 }
 

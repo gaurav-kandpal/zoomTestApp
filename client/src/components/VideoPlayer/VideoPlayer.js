@@ -1,30 +1,50 @@
 //** @jsx jsx */
-// import { jsx } from '@emotion/core';
-import React, { useEffect } from 'react';
-import './VideoPlayer.scss';
+import React from "react";
+import { jsx } from "@emotion/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-// import videoPlayerStyles from './MyStyle.style';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .meeting-app": {
+      width: "auto !important",
+      height: "50vh !important",
+    },
 
-function VideoPlayer() {
-    // full-screen-widget__icon full-screen-widget__icon--full
+    "& .meeting-client": {
+      position: "static !important",
+      height: "50vh !important",
+    },
 
-    useEffect(() => {
-        // const fullScreenBtn = document.querySelector('.full-screen-widget');
+    "& .meeting-client-inner": {
+      position: "static !important",
+    },
 
-        // function handleFullScreenClick() {
-        //     console.log('Clicked');
-        // }
+    "& #active-my-canvas + div": {
+      height: "50vh !important",
+    },
 
-        // if (fullScreenBtn) {
-        //     fullScreenBtn.addEventListener('click', handleFullScreenClick);
-        // }
+    "& #sv-active-speaker-view": {
+      height: "50vh !important",
+    },
 
-        // return () => fullScreenBtn && fullScreenBtn.removeEventListner('click', handleFullScreenClick);
-    });
+    "& #wc-footer.footer": {
+      backgroundImage: "none !important",
+      justifyContent: "center !important",
+    },
 
-    return (
-        <div id="zmmtg-root" ></div>
-    );
-}
+    "& #dialog-join.diaout-layer": {
+      display: "none !important",
+    },
+
+    position: "static !important",
+    height: "50vh !important",
+  },
+}));
+
+const VideoPlayer = () => {
+  const classes = useStyles();
+
+  return <div id="zmmtg-root" className={classes.root}></div>;
+};
 
 export default VideoPlayer;

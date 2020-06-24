@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(1),
     },
 
+    "& input[type=text]:focus": {
+      outline: "0 !important",
+    },
+
     "& .MuiFormControl-root": {
       width: "100%",
     },
@@ -46,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
   accessForm: {
     padding: theme.spacing(3),
     margin: theme.spacing(3),
-    maxWidth: "320px",
   },
   signInBtn: {
     background: "linear-gradient(45deg, #f96dc8 1%,#ff5669 50%,#ffb215 100%)",

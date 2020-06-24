@@ -27,13 +27,42 @@ const useStyles = makeStyles((theme) => ({
       height: "50vh !important",
     },
 
+    "& #sv-active-speaker-view .active-main": {
+      height: "50vh !important",
+    },
+
+    "& #sv-active-speaker-view .active-main span.hidden-cancel-spotlight": {
+      display: "none !important",
+    },
+
     "& #wc-footer.footer": {
       backgroundImage: "none !important",
       justifyContent: "center !important",
     },
 
+    "& #wc-footer > #wc-footer-left + div button:nth-child(2)": {
+      display: "none !important",
+    },
+
+    "& #wc-footer > #wc-footer-left + div .more-button": {
+      display: "none !important",
+    },
+
     "& #dialog-join.diaout-layer": {
       display: "none !important",
+    },
+
+    "& canvas#sv-active-video": {
+      height: "50vh !important",
+      width: "100px !important",
+    },
+
+    "& canvas#active-my-canvas": {
+      height: "50vh !important",
+      width: "100px !important",
+      position: "absolute !important",
+      top: "0 !important",
+      left: "0 !important",
     },
 
     position: "static !important",

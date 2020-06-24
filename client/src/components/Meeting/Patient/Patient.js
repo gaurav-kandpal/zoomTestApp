@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as UserActions from "../../../services/Store/Reducers/User";
 import {
@@ -14,14 +14,11 @@ import {
     Paper,
     Typography,
 } from "@material-ui/core";
-import { Edit, LocationOn, Facebook } from "@material-ui/icons";
+import { Edit, LocationOn } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Api from "../../../services/Api";
-import { isEmpty } from "../../../services/common";
 import Navbar from "../../../components/layouts/Navbar";
 import JoiningFormPatient from "../../../components/Meeting/Forms/JoinMeeting";
-import CreateMeeting from "../../../components/Meeting/CreateMeeting";
 import profileImg1 from "./images/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,9 +60,6 @@ const useStyles = makeStyles((theme) => ({
 function Patient(props) {
     const classes = useStyles();
     const patientName = 'Welcome ' + localStorage.getItem('patient');
-    const [scheduleAMeeting, setScheduleAMeeting] = useState(false)
-    const [meetingRequested, setMeetingRequested] = useState(false)
-    const [loadJoinForm, setLoadJoinForm] = useState(false)
 
     // async function onRequestVideoConsult() {
     //     const flag = 'true';

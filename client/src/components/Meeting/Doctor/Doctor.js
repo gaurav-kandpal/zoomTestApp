@@ -1,25 +1,14 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
-  CardMedia,
-  CardActions,
-  CardActionArea,
   Grid,
-  Link,
-  Paper,
   Typography,
 } from "@material-ui/core";
-import { Edit, LocationOn, Facebook } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Api from "../../../services/Api";
-import { isEmpty } from "../../../services/common";
 import Navbar from "../../../components/layouts/Navbar";
-import JoiningForm from "../../../components/Meeting/Forms/JoinMeeting";
 import StartMeeting from "../../../components/Meeting/StartMeeting";
 // import profileImg1 from "./images/austin-distel-7bMdiIqz_J4-unsplash.jpg";
 

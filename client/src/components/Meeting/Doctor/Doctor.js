@@ -60,15 +60,15 @@ function Doctor(props) {
 
       <Box className={classes.root}>
         <Grid container spacing={0}>
-          <Grid item xs={12} justify="center">
+          <Grid item xs={12}>
             <Typography
               className={classes.fieldTitle}
               variant="h6"
               align="center"
             >
-              Hi Doc, please click below to Approve &amp; Join a Meeting
+              Please click Approve &amp; Join a Meeting
               <br />
-              {props.data.isMeetingRequested
+              { props.data.isMeetingRequested
                 ? "One Meeting needs to be Approved"
                 : "There is no meeting to be approved!!!"}
             </Typography>
@@ -81,7 +81,11 @@ function Doctor(props) {
               Approve a Meeting
             </Button>
             {props.data.isMeetingApproved ? (
-              <Button onClick={props.onClickJoinMeeting}>Join a Meeting</Button>
+              <Button 
+                onClick={props.onClickJoinMeeting}
+                >
+                Join a Meeting
+              </Button>
             ) : (
               ""
             )}

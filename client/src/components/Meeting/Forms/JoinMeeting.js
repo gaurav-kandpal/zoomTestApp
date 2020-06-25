@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   teal: {
     color: teal[500],
     backgroundColor: teal[100],
-    border: `1px solid ${yellow[200]}`,
+    border: `1px solid ${teal[200]}`,
   },
   yellow: {
     color: yellow[800],
@@ -202,22 +202,19 @@ const JoinMeetingForm = (props) => {
                       <Grid item xs={6} className={classes.statusStyle}>
                         {!isJoinEnabled ? (
                           <Chip
-                          variant="outlined"
-                          className={clsx(
-                            classes.teal,
-                            classes.chipStyle
-                          )}
-                          label="Waiting For Approval"
-                        />
+                            variant="outlined"
+                            className={clsx(classes.teal, classes.chipStyle)}
+                            label="Waiting For Approval"
+                          />
                         ) : (
                           <Chip
-                          variant="outlined"
-                          className={clsx(
-                            classes.lightGreen,
-                            classes.chipStyle
-                          )}
-                          label="Confirmed"
-                        />
+                            variant="outlined"
+                            className={clsx(
+                              classes.lightGreen,
+                              classes.chipStyle
+                            )}
+                            label="Confirmed"
+                          />
                         )}
                       </Grid>
                       <Grid item xs={6} alignitems="right">

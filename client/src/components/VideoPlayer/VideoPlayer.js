@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
     "& #sv-active-speaker-view .active-main": {
       height: "50vh !important",
+      width: "auto !important",
     },
 
     "& #sv-active-speaker-view .active-main span.hidden-cancel-spotlight": {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     "& #wc-footer.footer": {
-      backgroundImage: "none !important",
+      // backgroundImage: "none !important",
       justifyContent: "center !important",
     },
 
@@ -63,6 +64,11 @@ const useStyles = makeStyles((theme) => ({
       position: "absolute !important",
       top: "0 !important",
       left: "0 !important",
+    },
+
+    "& #wc-loading": {
+      width: "100% !important",
+      height: "100% !important",
     },
 
     position: "static !important",

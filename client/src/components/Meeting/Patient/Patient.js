@@ -58,94 +58,86 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Patient(props) {
-    const classes = useStyles();
-    const patientName = 'Welcome ' + localStorage.getItem('patient');
+  const classes = useStyles();
+  const patientName = 'Welcome ' + localStorage.getItem('patient');
 
-    // async function onRequestVideoConsult() {
-    //     const flag = 'true';
-    //     const response = await Api().post("/meetingApproval/meetingRequested", { flag });
-    //     props.onRequestAMeeting(true);
-    //     setLoadJoinForm(true);
-    // }
+  // async function onRequestVideoConsult() {
+  //     const flag = 'true';
+  //     const response = await Api().post("/meetingApproval/meetingRequested", { flag });
+  //     props.onRequestAMeeting(true);
+  //     setLoadJoinForm(true);
+  // }
 
-    if (props.data.isMeetingRequested) {
-        return <JoiningFormPatient isApproved={props.data.isMeetingApproved}/>
-    }
-    console.log('props-patient', props)
-    return (
-        <>
-            <Navbar pageTitle={patientName} />
+  if (props.data.isMeetingRequested) {
+    return <JoiningFormPatient isApproved={props.data.isMeetingApproved} />
+  }
+  console.log('props-patient', props)
+  return (
+    <>
+      <Navbar pageTitle={patientName} />
 
-            <Box>
-                <Grid container spacing={0}>
-                    <Grid item xs={12}>
-                        <Paper
-                            className={classes.userLocation}
-                            variant="elevation"
-                            elevation={1}
-                            square={true}
-                        >
-                            <span className={classes.userLocationName}>
-                                <LocationOn />
-                                <Typography variant="body1">
-                                    Downer Grove, Illinois
-                    </Typography>
-                            </span>
+      <Box>
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <Paper
+              className={classes.userLocation}
+              variant="elevation"
+              elevation={1}
+              square={true}
+            >
+              <span className={classes.userLocationName}>
+                <LocationOn />
+                <Typography variant="body1">Downer Grove, Illinois</Typography>
+              </span>
 
-                            <Link>
-                                <Edit />
-                            </Link>
-                        </Paper>
-                    </Grid>
-                </Grid>
-            </Box>
+              <Link>
+                <Edit />
+              </Link>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
 
-            <Box className={classes.root}>
-                <Grid container spacing={0}>
-                    <Grid item xs={12}>
-                        <Typography className={classes.fieldTitle} variant="h6">
-                            Select consultant from past visit
-                </Typography>
+      <Box className={classes.root}>
+        <Grid container spacing={0}>
+          <Grid item xs={12}>
+            <Typography className={classes.fieldTitle} variant="h6">
+              Select consultant from past visit
+            </Typography>
 
-                        <Grid container spacing={0}>
-                            <Grid item xs={12}>
-                                <Card className={classes.cardRoot} elevation={10}>
-                                    <CardMedia
-                                        component="img"
-                                        className={classes.cardCover}
-                                        image={profileImg1}
-                                        title="Consultant"
-                                    />
+            <Grid container spacing={0}>
+              <Grid item xs={12}>
+                <Card className={classes.cardRoot} elevation={10}>
+                  <CardMedia
+                    component="img"
+                    className={classes.cardCover}
+                    image={profileImg1}
+                    title="Consultant"
+                  />
 
-                                    <div className={classes.cardDetails}>
-                                        <CardActionArea>
-                                            <CardContent className={classes.cardContent}>
-                                                <Typography variant="subtitle1" color="textPrimary">
-                                                    Dr. James Miller
-                            </Typography>
+                  <div className={classes.cardDetails}>
+                    <CardActionArea>
+                      <CardContent className={classes.cardContent}>
+                        <Typography variant="subtitle1" color="textPrimary">
+                          Dr. James Miller
+                        </Typography>
 
-                                                <Typography variant="body1" color="textSecondary">
-                                                    Pediatrician
-                            </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
+                        <Typography variant="body1" color="textSecondary">
+                          Pediatrician
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
 
-                                        <CardActions>
-                                            <Grid container spacing={0}>
-                                                <Grid item xs={12}>
-                                                    <Button onClick={props.onRequestVideo}>
-                                                        Request Video Consultation
-                              </Button>
+                    <CardActions>
+                      <Grid container spacing={0}>
+                        <Grid item xs={12}>
+                          <Button onClick={props.onRequestVideo}>
+                            Request Video Consultation
+                          </Button>
 
-                                                    <Button disabled>
-                                                        Request In-Person Consultation
-                              </Button>
-                                                </Grid>
-                                            </Grid>
-                                        </CardActions>
-                                    </div>
-                                </Card>
-                            </Grid>
+                          <Button disabled>
+                            Request In-Person Consultation
+                          </Button>
                         </Grid>
                       </Grid>
                     </CardActions>

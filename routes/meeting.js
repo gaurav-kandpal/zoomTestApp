@@ -15,45 +15,45 @@ function generatePassword() {
   return password;
 }
 
-router.post('/create', (req, res) => {
-    const meeting_topic = req.body.meeting_topic || "Vishant's Meeting";
-    const meeting_number = req.body.meeting_number;
-    const meeting_pwd = req.body.meeting_pwd || generatePassword();
-    
-    console.log('Password', meeting_pwd);
-    console.log('Password-length', meeting_pwd.length);
-    let options = {
-        // uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
-        uri: 'https://api.zoom.us/v2/users/7sD7hcj3StmL_eqJmqY_qA/meetings',
-        auth: { 'bearer': token },
-        method: 'POST',
-        headers: {
-            'User-Agent': 'Zoom-api-Jwt-Request',
-            'content-type': 'application/json'
-        },
-        body: {
-            "topic": meeting_topic,
-            "type": 2,
-            "start_time": "2020-06-23T16:15:00Z",
-            "duration": 60,
-            "timezone": "Asia/Calcutta",
-            "password": meeting_pwd,
-            "agenda": "Meeting Description goes here....",
-            "settings": {
-                "host_video": false,
-                "participant_video": false,
-                "in_meeting": true,
-                "join_before_host": true,   
-                "mute_upon_entry": true,
-                "approval_type": 2,
-                "audio": "both",
-                "auto_recording": "local",
-                "option_jbh": true,
-                "waiting_room": false
-            }
-        },
-        json: true
-    };
+router.post("/create", (req, res) => {
+  const meeting_topic = req.body.meeting_topic || "Vishant's Meeting";
+  const meeting_number = req.body.meeting_number;
+  const meeting_pwd = req.body.meeting_pwd || generatePassword();
+
+  console.log("Password", meeting_pwd);
+  console.log("Password-length", meeting_pwd.length);
+  let options = {
+    // uri: 'https://api.zoom.us/v2/users/00NAA7rTTaSdcRit_QRoUw/meetings', // VIShant
+    uri: "https://api.zoom.us/v2/users/7sD7hcj3StmL_eqJmqY_qA/meetings",
+    auth: { bearer: token },
+    method: "POST",
+    headers: {
+      "User-Agent": "Zoom-api-Jwt-Request",
+      "content-type": "application/json",
+    },
+    body: {
+      topic: meeting_topic,
+      type: 2,
+      start_time: "2020-06-25T16:15:00Z",
+      duration: 60,
+      timezone: "Asia/Calcutta",
+      password: meeting_pwd,
+      agenda: "Meeting Description goes here....",
+      settings: {
+        host_video: false,
+        participant_video: false,
+        in_meeting: true,
+        join_before_host: true,
+        mute_upon_entry: true,
+        approval_type: 2,
+        audio: "both",
+        auto_recording: "local",
+        option_jbh: true,
+        waiting_room: false,
+      },
+    },
+    json: true,
+  };
 
   // Use request-promise module's .then() method to make request calls.
   rp(options)

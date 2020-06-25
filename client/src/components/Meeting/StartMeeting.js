@@ -1,5 +1,7 @@
 import React from "react";
-import { Box, Grid } from "@material-ui/core";
+import { Avatar, Box, Grid, Paper, Typography } from "@material-ui/core";
+import { Videocam } from "@material-ui/icons";
+import { teal } from "@material-ui/core/colors";
 import { ZoomMtg } from "@zoomus/websdk";
 
 import Api from "../../services/Api";
@@ -88,11 +90,57 @@ class StartMeeting extends React.Component {
     return (
       <>
         <Box>
-          <Grid container spaceing={0} justify="center">
-            <Grid item xs={8}>
-              <VideoPlayer />
+          <Paper style={{ backgroundColor: "#F0F0F0", width: "100%" }}>
+            <Grid container spaceing={0} justify="center">
+              <Grid item xs={12} md={8}>
+                <VideoPlayer />
+              </Grid>
+
+              <Grid item xs={12} md={8} style={{height: "50vh", backgroundColor: "#FFFFFF", boxSizing: "border-box", padding: "15px"}}>
+                <div style={{ display: "flex" }}>
+                  <Avatar
+                    style={{
+                      color: teal[500],
+                      backgroundColor: teal[100],
+                      border: `1px solid ${teal[200]}`,
+                    }}
+                  >
+                    <Videocam />
+                  </Avatar>
+
+                  <Box
+                    style={{
+                      display: "flex",
+                      flexGrow: 1,
+                      boxSizing: "border-box",
+                      paddingLeft: "15px",
+                    }}
+                  >
+                    <Grid container spacing={0}>
+                      <Grid item xs={8}>
+                        <Typography color="textPrimary" variant="h5">
+                          Follow-up Visit
+                        </Typography>
+                        <Typography color="textSecondary" variant="subtitle1">
+                          Dr. James Miller, MD
+                        </Typography>
+                      </Grid>
+
+                      <Grid item xs={4}>
+                        <Typography
+                          align="right"
+                          color="textSecondary"
+                          variant="body2"
+                        >
+                          06/20/2020
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                </div>
+              </Grid>
             </Grid>
-          </Grid>
+          </Paper>
         </Box>
       </>
     );

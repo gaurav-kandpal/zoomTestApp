@@ -36,7 +36,7 @@ class CreateMeeting extends React.Component {
         <Navbar />
         <Box>
           <Grid container spaceing={0} justify="center">
-            <Grid item xs={8}>
+            <Grid item xs={8} md={12}>
               Loading...
             </Grid>
           </Grid>

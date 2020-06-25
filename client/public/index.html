@@ -15,6 +15,63 @@
     />
     <!-- <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.8/css/bootstrap.css" />
   <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.8/css/react-select.css" /> -->
+    <style>
+      body .sharer-controlbar-container + .ReactModalPortal {
+        display: none !important;
+      }
+
+      body
+        .sharer-controlbar-container
+        + .ReactModalPortal
+        + .ReactModalPortal {
+        width: 66% !important;
+        position: relative !important;
+        margin: 0 auto !important;
+        height: 0 !important;
+      }
+
+      body
+        .sharer-controlbar-container
+        + .ReactModalPortal
+        + .ReactModalPortal
+        > div
+        > div {
+        top: -85vh !important;
+        right: 10px;
+        height: 165px !important;
+      }
+
+      .suspension-no-drag.suspension-window.react-draggable {
+        height: 165px !important;
+      }
+
+      .suspension-content-radius.suspension-content {
+        height: 137px !important;
+      }
+
+      .suspension-content2 {
+        height: inherit !important;
+      }
+
+      .suspension-canvas-layer {
+        height: 137px !important;
+      }
+
+      video#suspension-my-video {
+        display: none !important;
+      }
+
+      .suspension-img-wrapper {
+        z-index: 0 !important;
+        height: 25% !important;
+        bottom: 0 !important;
+        top: inherit !important;
+      }
+
+      #wc-footer .left-tool-item {
+        width: 100px !important;
+      }
+    </style>
     <title>Patient Portal</title>
   </head>
 

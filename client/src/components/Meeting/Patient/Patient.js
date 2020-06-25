@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Patient(props) {
   const classes = useStyles();
-  const patientName = 'Welcome ' + localStorage.getItem('patient');
+  const patientName = "Welcome " + localStorage.getItem("patient");
 
   // async function onRequestVideoConsult() {
   //     const flag = 'true';
@@ -69,9 +69,9 @@ function Patient(props) {
   // }
 
   if (props.data.isMeetingRequested) {
-    return <JoiningFormPatient isApproved={props.data.isMeetingApproved} />
+    return <JoiningFormPatient isApproved={props.data.isMeetingApproved} />;
   }
-  console.log('props-patient', props)
+  console.log("props-patient", props);
   return (
     <>
       <Navbar pageTitle={patientName} />

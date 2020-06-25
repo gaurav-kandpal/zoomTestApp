@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
       width: "auto !important",
     },
 
-    "& #sv-active-speaker-view .active-main span.hidden-cancel-spotlight": {
+    "& #sv-active-speaker-view .active-main span.hidden.cancel-spotlight": {
       display: "none !important",
     },
 

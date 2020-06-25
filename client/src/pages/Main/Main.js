@@ -5,6 +5,7 @@ import Api from "../../services/Api";
 import Doctor from "../../components/Meeting/Doctor/Doctor";
 import Patient from "../../components/Meeting/Patient/Patient";
 import * as UserActions from "../../services/Store/Reducers/User";
+import './Main.css';
 
 class Main extends React.Component {
   state = {
@@ -93,7 +94,7 @@ class Main extends React.Component {
         </>
       );
     }
-    return <div>Loading ... </div>;
+    return <div className="main_loader"> </div>;
   }
 }
 

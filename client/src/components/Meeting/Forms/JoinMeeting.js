@@ -14,11 +14,10 @@ import {
   Paper,
   Typography,
 } from "@material-ui/core";
-import { Edit, LocationOn, AssignmentInd, Videocam } from "@material-ui/icons";
+import { Edit, LocationOn, Videocam } from "@material-ui/icons";
 import { teal, yellow, lightGreen } from "@material-ui/core/colors";
 
 // import StartMeeting from '../StartMeeting';
-import ApproveMeeting from "../ApproveMeeting";
 import StartMeeting from "../StartMeeting";
 import Navbar from "../../layouts/Navbar";
 import Api from "../../../services/Api";

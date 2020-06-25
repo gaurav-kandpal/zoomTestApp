@@ -1,6 +1,6 @@
 import React from 'react';
 import Api from '../../services/Api';
-import StartMeeting from './StartMeeting';
+import JoinMeeting from './JoinMeeting';
 
 class ApproveMeeting extends React.Component {
     constructor(props) {
@@ -52,6 +52,7 @@ class ApproveMeeting extends React.Component {
             meeting_number: this.state.submittedData && this.state.submittedData.id,
             meeting_pwd: this.state.submittedData && this.state.submittedData.password
         }
+
         if (!this.state.isJoined) {
             return (
                 <div className='app-container'>

@@ -1,4 +1,4 @@
-.login-form {
+/* .login-form {
     padding: 10px 10px;
 }
 
@@ -26,4 +26,9 @@
 
 .login-form form button:active {
     transform: scale(1.02);
+} */
+
+input[type=text]#loginEmailInput:focus {
+    outline: none !important;
+    outline-offset: 0 !important;
 }

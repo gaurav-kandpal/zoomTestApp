@@ -1,0 +1,17 @@
+.join-meeting-form {
+    margin-top: 40px;
+}
+
+form input {
+    margin: 5px 0;
+}
+
+#join_meeting {
+    margin: auto;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    padding: 5px 20px;
+    border-radius: 100px;
+    box-shadow: 1px 1px 2px grey;
+    background: rgb(110, 129, 185);
+}

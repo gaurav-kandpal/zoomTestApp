@@ -34,7 +34,7 @@ router.post("/create", (req, res) => {
     body: {
       topic: meeting_topic,
       type: 2,
-      start_time: "2020-06-25T16:15:00Z",
+      start_time: "2020-06-24T10:15:00Z",
       duration: 60,
       timezone: "Asia/Calcutta",
       password: meeting_pwd,

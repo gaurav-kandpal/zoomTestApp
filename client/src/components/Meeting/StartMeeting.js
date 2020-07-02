@@ -92,11 +92,20 @@ class StartMeeting extends React.Component {
         <Box>
           <Paper style={{ backgroundColor: "#F0F0F0", width: "100%" }}>
             <Grid container spaceing={0} justify="center">
-              <Grid item xs={12} md={8}>
+              <Grid item xs={12} md={12}>
                 <VideoPlayer />
               </Grid>
 
-              <Grid item xs={12} md={8} style={{height: "50vh", backgroundColor: "#FFFFFF", boxSizing: "border-box", padding: "15px"}}>
+              <Grid
+                item
+                xs={12}
+                md={12}
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  boxSizing: "border-box",
+                  padding: "15px",
+                }}
+              >
                 <div style={{ display: "flex" }}>
                   <Avatar
                     style={{

@@ -7,12 +7,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& .meeting-app": {
       width: "auto !important",
-      height: "50vh !important",
+      height: "calc(100vh - 90px) !important",
     },
 
     "& .meeting-client": {
       position: "static !important",
-      height: "50vh !important",
+      height: "calc(100vh - 90px) !important",
     },
 
     "& .meeting-client-inner": {
@@ -20,15 +20,15 @@ const useStyles = makeStyles((theme) => ({
     },
 
     "& #active-my-canvas + div": {
-      height: "50vh !important",
+      height: "calc(100vh - 90px) !important",
     },
 
     "& #sv-active-speaker-view": {
-      height: "50vh !important",
+      height: "calc(100vh - 90px) !important",
     },
 
     "& #sv-active-speaker-view .active-main": {
-      height: "50vh !important",
+      height: "calc(100vh - 90px) !important",
       width: "auto !important",
     },
 
@@ -41,8 +41,16 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: "center !important",
     },
 
-    "& #wc-footer > #wc-footer-left + div button:nth-child(2)": {
+    // "& #wc-footer > #wc-footer-left + div button:nth-child(2)": {
+    //   display: "none !important",
+    // },
+
+    "& #wc-footer-left + div button": {
       display: "none !important",
+    },
+
+    "& #wc-footer-left + div > aside + button": {
+      display: "block !important",
     },
 
     "& #wc-footer > #wc-footer-left + div .more-button": {
@@ -54,12 +62,12 @@ const useStyles = makeStyles((theme) => ({
     },
 
     "& canvas#sv-active-video": {
-      height: "50vh !important",
+      height: "calc(100vh - 90px) !important",
       width: "100% !important",
     },
 
     "& canvas#active-my-canvas": {
-      height: "50vh !important",
+      height: "calc(100vh - 90px) !important",
       width: "100px !important",
       position: "absolute !important",
       top: "0 !important",
@@ -72,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     position: "static !important",
-    height: "50vh !important",
+    height: "calc(100vh - 90px) !important",
   },
 }));
 

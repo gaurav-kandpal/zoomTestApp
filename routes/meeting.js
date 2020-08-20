@@ -16,7 +16,7 @@ function generatePassword() {
 }
 
 router.post("/create", (req, res) => {
-  const meeting_topic = req.body.meeting_topic || "Vishant's Meeting";
+  const meeting_topic = req.body.meeting_topic || "Vishant's New Meeting";
   const meeting_number = req.body.meeting_number;
   const meeting_pwd = req.body.meeting_pwd || generatePassword();
 

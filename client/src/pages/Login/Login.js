@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import clsx from "clsx";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -11,9 +12,10 @@ import {
   Paper,
   Select,
   TextField,
-  Typography,
+  Typography
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { teal, grey } from "@material-ui/core/colors";
 
 import * as AuthActions from "../../services/Store/Reducers/Auth";
 import * as UserActions from "../../services/Store/Reducers/User";
@@ -22,46 +24,62 @@ import Api from "../../services/Api";
 
 // import './Login.css';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     "& .MuiTextField-root": {
-      marginBottom: theme.spacing(1),
+      marginBottom: theme.spacing(1)
     },
 
     "& input[type=text]:focus": {
-      outline: "0 !important",
+      outline: "0 !important"
     },
 
     "& .MuiFormControl-root": {
-      width: "100%",
+      width: "100%"
     },
 
-    "& .MuiButton-contained": {
-      boxShadow:
-        "0px 6px 6px -3px rgba(240, 109, 200, 0.12), 0px 10px 14px 1px rgba(255, 86, 105, 0.24), 0px 4px 18px 3px rgba(255, 178, 21, 0.22)",
+    "& .MuiInput-underline:after": {
+      borderBottom: `2px solid ${teal[400]}`
+    },
+
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: teal[400]
+    },
+
+    "& .MuiFormLabel-root.Mui-focused": {
+      color: teal[400]
     },
 
     height: "100vh",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: teal[400],
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   accessForm: {
-    padding: theme.spacing(3),
     margin: theme.spacing(3),
+    padding: `${theme.spacing(6)}px ${theme.spacing(3)}px`
   },
   signInBtn: {
-    background: "linear-gradient(45deg, #f96dc8 1%,#ff5669 50%,#ffb215 100%)",
+    background: grey[800],
     marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(3)
   },
   inputProfileSelect: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
+  colorWhite: {
+    color: "#FFFFFF"
+  },
+  fontBold: {
+    fontWeight: "bold"
+  },
+  textLoginInstruction: {
+    marginBottom: theme.spacing(2)
+  }
 }));
 
-const Login = (props) => {
+const Login = props => {
   const [email, setEmail] = useState("");
   // const [error, setError] = useState("");
   // const [role, setRole] = useState('');
@@ -140,11 +158,40 @@ const Login = (props) => {
         <Grid container spacing={0}>
           <Grid item xs={false} sm={3} />
           <Grid item xs={12} sm={6}>
-            <Typography variant="h5" color="textPrimary" align="center">
+            <Typography
+              variant="h5"
+              color="textPrimary"
+              align="center"
+              className={clsx(classes.fontBold, classes.colorWhite)}
+            >
               Welcome to Patient Portal
             </Typography>
-
+          </Grid>
+        </Grid>
+        <Grid container spacing={0}>
+          <Grid item xs={false} sm={3} />
+          <Grid item xs={12} sm={6}>
             <Paper className={classes.accessForm} elevation={10}>
+              <Grid container spacing={0}>
+                <Grid item xs={12} className={classes.textLoginInstruction}>
+                  <Typography
+                    variant="h5"
+                    align="center"
+                    className={classes.fontBold}
+                  >
+                    Hello
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    align="center"
+                    color="textSecondary"
+                    className={classes.fontBold}
+                  >
+                    Select your profile from below to continue to login
+                  </Typography>
+                </Grid>
+              </Grid>
+
               <FormControl>
                 <InputLabel id="user_profile_select_label">
                   Login as:
@@ -159,8 +206,11 @@ const Login = (props) => {
                   <MenuItem value="">
                     <em>Select</em>
                   </MenuItem>
-                  <MenuItem value="doctor">Doctor</MenuItem>
-                  <MenuItem value="patient">Patient</MenuItem>
+                  <MenuItem value="doctor">Dr. John Doe</MenuItem>
+                  <MenuItem value="doctor">Dr. Jim Miller</MenuItem>
+                  <MenuItem value="doctor">Dr. John R. Baker</MenuItem>
+                  <MenuItem value="doctor">Dr. Gary K. Robinson</MenuItem>
+                  <MenuItem value="doctor">Dr. John P. Furman</MenuItem>
                 </Select>
               </FormControl>
               {props.userState.role === "doctor" ? (
@@ -222,14 +272,14 @@ const Login = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   authState: state.AuthReducer,
-  userState: state.UserReducer,
+  userState: state.UserReducer
 });
 
 const mapDispatchToProps = {
   ...AuthActions,
-  ...UserActions,
+  ...UserActions
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

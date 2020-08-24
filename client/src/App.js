@@ -2,6 +2,8 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Box } from "@material-ui/core";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 import store from "./services/Store/Store";
 
@@ -21,19 +23,21 @@ function disableZoomVideo() {
 function App() {
   disableZoomVideo();
   return (
-    <div className="App">
-      <Box>
-        <Provider store={store}>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/app" component={Main} />
-            </Switch>
-          </BrowserRouter>
-        </Provider>
-      </Box>
-    </div>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <div className="App">
+        <Box>
+          <Provider store={store}>
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={Login} />
+                <Route path="/app" component={Main} />
+              </Switch>
+            </BrowserRouter>
+          </Provider>
+        </Box>
+      </div>
+    </MuiPickersUtilsProvider>
   );
 }
 
